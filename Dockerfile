@@ -1,11 +1,14 @@
-FROM python:3
+FROM python:3.6-slim
 
 WORKDIR /app
 
 RUN pip3 install --upgrade pip
+
 COPY requirements.txt requirements.txt
+RUN pip3 install -r requirements.txt
+
 COPY . .
 
-RUN pip3 install --no-cache-dir -r requirements.txt
+EXPOSE 5000
 
-CMD [ "python3", "web/manage.py", "runserver", "0.0.0.0:8000" ]
+CMD ["python3", "web/manage.py", "runserver", "0.0.0.0:5000"]
