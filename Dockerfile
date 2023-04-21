@@ -1,8 +1,9 @@
 FROM python:3
 
-WORKDIR .
+WORKDIR /app
 
-COPY requirements.txt ./
+RUN pip install --upgrade pip
+COPY requirements.txt requirements.txt
 COPY . .
 
 RUN pip install --no-cache-dir -r requirements.txt
